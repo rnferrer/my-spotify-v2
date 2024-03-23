@@ -4,11 +4,17 @@ import './App.css'
 function App() {
   const [count, setCount] = useState(0)
 
+  let handleClick = async() => {
+    fetch('/api/hello')
+    .then((data)=>data.json())
+    .then((result)=>{ console.log(result)})
+  }
+
   return (
     <>
       <h1>Vite + React</h1>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
+        <button onClick={() => handleClick()}>
           count is {count}
         </button>
         <p>
