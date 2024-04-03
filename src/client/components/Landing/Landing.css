@@ -1,0 +1,50 @@
+#landing-container{
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(-45deg, var(--background-tertiary), var(--background), var(--background-secondary));
+  background-size: 400% 400%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+
+#landing-content-container{
+  width: 70%;
+  margin-left: 3rem;
+  position: absolute;
+}
+
+#landing-subtext,
+#landing-header{
+  animation: slidein 1s ease;
+  position: relative;
+}
+
+#landing-header{
+  font-size: 6rem;
+  color: var(--primary-text);
+
+}
+
+#landing-subtext{
+  margin-bottom: 20px;
+  color: var(--secondary-text);
+  font-size: 1.2rem;
+  opacity: 0;
+  animation-delay: .5s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes slidein {
+  from{
+    top: -30px;
+    opacity: 0%;
+  }
+
+  to{
+    top: 0;
+    opacity: 100%;
+  }
+}
+
