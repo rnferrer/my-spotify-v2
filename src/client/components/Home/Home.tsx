@@ -1,15 +1,15 @@
-
 import './Home.css'
+import MusicDrawer from '../MusicDrawer/MusicDrawer';
 
 
-function Home() {
+function Home():JSX.Element{
   return (
     <>
-      <div id="landing-container">
-        <h1 id='home-container'>Home page</h1>
+      <div id="home-container">
+        <MusicDrawer/>
       </div>
     </>
   )
 }
 
-export default Home
+export default Home;

@@ -1,0 +1,16 @@
+
+#search-queue-divider{
+  top: 33%;
+}
+
+#queue-library-divider{
+  top: 66%;
+}
+
+#search-queue-divider,
+#queue-library-divider{
+  position: relative;
+  width: 350px;
+  border: 1px solid var(--background-tertiary);
+  align-self: center;
+}

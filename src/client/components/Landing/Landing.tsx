@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 import './Landing.css'
 
 
-function Landing() {
+function Landing():JSX.Element {
   return (
     <>
       <div id="landing-container">

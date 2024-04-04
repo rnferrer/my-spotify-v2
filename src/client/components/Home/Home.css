@@ -1,3 +1,6 @@
 #home-container{
-  color: var(--primary-text);
+  background-color: var(--background);
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
 }
