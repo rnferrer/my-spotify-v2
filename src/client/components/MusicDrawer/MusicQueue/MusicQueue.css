@@ -9,6 +9,7 @@
 #music-queue-title{
   color: var(--text-primary);
   padding-left: 10px;
+  margin-top: 10px;
 }
 
 #music-queue-list-container{
@@ -20,6 +21,11 @@
 
 #music-queue-list-item-container{
   padding: 10px 10px;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items:center;
+  justify-content: space-between;
 }
 
 #music-queue-list-item-info{
@@ -43,4 +49,13 @@
   height: 25px;
   width: 25px;
   margin-right: 8px;
+}
+
+#music-queue-list-item-button{
+  border-radius: 20px;
+}
+
+#music-queue-list-item-button:hover{
+  cursor: pointer;
+  background-color: var(--brand-destructive);
 }
