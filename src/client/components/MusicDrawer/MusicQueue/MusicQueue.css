@@ -1,0 +1,8 @@
+#music-queue-container{
+  position: absolute;
+  top: 33%;
+}
+
+#music-queue-list-container{
+  background-color: var(--background-tertiary);
+}

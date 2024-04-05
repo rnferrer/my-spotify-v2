@@ -1,0 +1,63 @@
+#music-search-container{
+  position: relative;
+  padding: 20px;
+  height: fit-content;
+  max-height: 330px;
+}
+
+#search-results-container{
+  position: relative;
+  background-color: var(--background-secondary);
+  margin-top: 20px;
+  border-radius: 10px;
+  padding: 0px 0px;
+}
+
+.search-result-item{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 10px;
+}
+
+.search-result-item:nth-child(1){
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.search-result-item:last-child{
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.search-result-item:hover{
+  background-color: var(--background-tertiary);
+  cursor: pointer;
+}
+
+#search-result-info-container{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: var(--text-primary);
+}
+
+#search-result-image-container{
+  height: 25px;
+  width: 25px;
+  margin-right: 5px;
+}
+
+.search-result-add-button:hover{
+  background-color: var(--brand-primary);
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.search-result-add-button{
+  width: 15px;
+  height: auto;
+  border-radius: 20px;
+  color: white;
+}

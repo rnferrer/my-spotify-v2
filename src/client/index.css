@@ -13,6 +13,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 240 10% 3.9%;
     --primary: 119 59% 61%;
+    --brand-primary: hsl(119, 59%, 61%);
     --primary-foreground: 355.7 100% 97.3%;
     --secondary: 240 4.8% 95.9%;
     --secondary-foreground: 240 5.9% 10%;
@@ -26,8 +27,8 @@
     --input: 240 5.9% 90%;
     --ring: 142.1 76.2% 36.3%;
     --radius: 0.5rem;
-    --primary-text: hsl(0, 0%, 100%);
-    --secondary-text: hsl(0, 0%, 50%);
+    --text-primary: hsl(0, 0%, 100%);
+    --text-secondary: hsl(0, 0%, 50%);
   }
 
   .dark {

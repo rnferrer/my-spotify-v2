@@ -23,13 +23,13 @@
 
 #landing-header{
   font-size: 6rem;
-  color: var(--primary-text);
+  color: var(--text-primary);
 
 }
 
 #landing-subtext{
   margin-bottom: 20px;
-  color: var(--secondary-text);
+  color: var(--text-secondary);
   font-size: 1.2rem;
   opacity: 0;
   animation-delay: .5s;

@@ -1,4 +1,6 @@
-
+#music-drawer-container{
+  position: relative;
+}
 #search-queue-divider{
   top: 33%;
 }
@@ -9,7 +11,7 @@
 
 #search-queue-divider,
 #queue-library-divider{
-  position: relative;
+  position: absolute;
   width: 350px;
   border: 1px solid var(--background-tertiary);
   align-self: center;
