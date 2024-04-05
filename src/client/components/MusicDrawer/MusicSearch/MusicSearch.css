@@ -1,16 +1,15 @@
 #music-search-container{
   position: relative;
-  padding: 20px;
+  padding: 10px 20px;
   height: fit-content;
   max-height: 330px;
 }
 
 #search-results-container{
   position: relative;
-  background-color: var(--background-secondary);
-  margin-top: 20px;
+  background-color: var(--background-quaternary);
+  margin-top: 10px;
   border-radius: 10px;
-  padding: 0px 0px;
 }
 
 .search-result-item{
@@ -18,7 +17,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 10px;
+  padding: 8px 10px;
 }
 
 .search-result-item:nth-child(1){
@@ -41,6 +40,7 @@
   flex-direction: row;
   align-items: center;
   color: var(--text-primary);
+  font-size: .8rem;
 }
 
 #search-result-image-container{
