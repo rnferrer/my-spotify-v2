@@ -65,7 +65,7 @@ function MusicQueue() {
     return toast({
       variant: 'destructive',
       description: `${song} has been removed from queue`,
-      duration: 1500,
+      duration: 100,
     })
   }
 

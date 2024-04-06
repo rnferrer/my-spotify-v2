@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Drawer, DrawerContent, DrawerTrigger } from '@/components/ui/drawer';
 import MusicSearch from './MusicSearch/MusicSearch';
 import MusicQueue from './MusicQueue/MusicQueue';
+import MusicLibrary from './MusicLibrary/MusicLibrary';
 
 function MusicDrawer() {
   return (
@@ -16,6 +17,7 @@ function MusicDrawer() {
           <div id='search-queue-divider'/>
           <MusicQueue/>
           <div id='queue-library-divider'/>
+          <MusicLibrary/>
         </DrawerContent>
 
       </Drawer>

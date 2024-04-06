@@ -1,0 +1,54 @@
+#music-library-container{
+  position: absolute;
+  top: 66%;
+  width: 100%;
+  height: 33%;
+}
+
+#music-library-header{
+  color: var(--text-primary);
+  font-size: 1.3rem;
+  margin-left: 10px;
+  margin-top: 8px;
+}
+
+#music-library-playlist-container{
+  height: 300px;
+}
+
+#playlist-scroll-area-container{
+  height: 100%;
+}
+
+#playlist-item-container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 10px 15px;
+}
+
+#playlist-image-info-container{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#playlist-image-container{
+  height: 35px;
+  width: 35px;
+}
+
+#playlist-item-info-container{
+  margin-left: 10px;
+}
+
+#playlist-item-title{
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+#playlist-item-author-total{
+  font-size: .8rem;
+  color: var(--text-secondary);
+}
