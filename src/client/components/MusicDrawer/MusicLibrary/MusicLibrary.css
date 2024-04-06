@@ -13,11 +13,12 @@
 }
 
 #music-library-playlist-container{
-  height: 300px;
+  height: 100%;
 }
 
 #playlist-scroll-area-container{
   height: 100%;
+  background-color: purple;
 }
 
 #playlist-item-container{
@@ -41,11 +42,15 @@
 
 #playlist-item-info-container{
   margin-left: 10px;
+  width: 80%;
+  text-overflow: hidden;
 }
 
 #playlist-item-title{
   font-weight: 500;
   color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 #playlist-item-author-total{

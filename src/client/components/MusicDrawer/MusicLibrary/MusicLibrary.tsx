@@ -22,7 +22,7 @@ const dummyPlaylists = [
   },
   {
     image: 'https://picsum.photos/50',
-    title: 'Some long playlist name that won\'t fit',
+    title: 'Some long playlist name that won\'t ',
     author: 'Raymond Ferrer',
     total: 230,
   },
@@ -44,7 +44,7 @@ function MusicLibrary():JSX.Element{
           Library
         </h1>
         <div id="music-library-playlist-container">
-          <ScrollArea className='playlist-scroll-area-container'>
+          <ScrollArea className='h-[85%]'>
 
             {
               dummyPlaylists.map((playlist) => {
