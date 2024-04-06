@@ -1,0 +1,50 @@
+.playlist-dialog-header-container{
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  padding: 20px;
+}
+
+.playlist-dialog-header-image-container{
+  height: 175px;
+  width: 175px;
+}
+
+.playlist-dialog-header-image{
+  height: 100%;
+  width: auto;
+}
+
+.playlist-dialog-header-info-container{
+  margin-left: 20px;
+}
+
+.playlist-dialog-header-type{
+  font-size: .9rem;
+  margin-bottom: -20px;
+}
+
+.playlist-dialog-header-title{
+  font-size: 5rem;
+  font-weight: 600;
+}
+
+.playlist-dialog-header-info-details-container{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: -20px;
+}
+
+.playlist-dialog-header-author-image-container{
+  height: 20px;
+  width: 20px;
+  margin-right: 5px;
+}
+
+.playlist-dialog-header-author-image{
+  height: 100%;
+  width: auto;
+  border-radius: 999px;
+}
+

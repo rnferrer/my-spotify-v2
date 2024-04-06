@@ -7,6 +7,18 @@ import {
   DialogTrigger
   } from "@/components/ui/dialog"
 
+import './PlaylistDialog.css'
+
+let dummyPlaylist = {
+  image: 'https://picsum.photos/100',
+  title: 'Chillin\`',
+  type: 'Playlist',
+  author: 'Raymond',
+  authorImage: 'https://picsum.photos/50',
+  followers: 4,
+  total: 400
+}
+
 function PlaylistDialog():JSX.Element {
   return (
     <>
@@ -19,7 +31,26 @@ function PlaylistDialog():JSX.Element {
             </svg>
           </DialogTrigger>
           <DialogContent>
-            Hello
+            <DialogHeader className="absolute w-full top-0 left-0 bg-gradient-to-r from-sky-500 to-indigo-500 rounded-t-xl">
+              <div className="playlist-dialog-header-container">
+                <div className="playlist-dialog-header-image-container">
+                  <img src={dummyPlaylist.image} className="playlist-dialog-header-image" alt="" />
+                </div>
+                <div className="playlist-dialog-header-info-container">
+                  <p className="playlist-dialog-header-type">{dummyPlaylist.type}</p>
+                  <h1 className="playlist-dialog-header-title">{dummyPlaylist.title}</h1>
+                  <div className="playlist-dialog-header-info-details-container">
+                    <div className="playlist-dialog-header-author-image-container">
+                      <img className="playlist-dialog-header-author-image" src={dummyPlaylist.authorImage}/>
+                    </div>
+                    <p>
+                      {`${dummyPlaylist.author} • ${dummyPlaylist.followers} likes • ${dummyPlaylist.total} songs`}
+                    </p>
+
+                  </div>
+                </div>
+              </div>
+            </DialogHeader>
           </DialogContent>
         </Dialog>
       </div>
