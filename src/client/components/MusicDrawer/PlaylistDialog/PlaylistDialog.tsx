@@ -15,7 +15,7 @@ import {
   } from "@/components/ui/table"
 
 import { ScrollArea } from "@/components/ui/scroll-area"
-
+import { Button } from "@/components/ui/button"
 import './PlaylistDialog.css'
 
 let dummyPlaylist = {
@@ -117,8 +117,8 @@ function MStoMinutes (ms: number): string {
   minutesString += ':' + ((ms/1000)%60).toString()
   return minutesString;
 }
-
-function PlaylistDialog():JSX.Element {
+//TODO: make PlaylistDialog props type
+function PlaylistDialog({handleQueue}:any):JSX.Element {
   return (
     <>
       <div id="playlist-dialog-container">
@@ -153,7 +153,7 @@ function PlaylistDialog():JSX.Element {
               </div>
             </DialogHeader>
 
-            <ScrollArea className="playlist-dialog-table-container">
+            <ScrollArea className="playlist-dialog-table-container h-[400px]">
               <Table>
                 <TableHeader>
                   <TableRow>
@@ -174,22 +174,26 @@ function PlaylistDialog():JSX.Element {
                     ?
                     samplePlaylist.map((track, i) => {
                       return(
-                        <TableRow>
+                        <TableRow className="text-white">
                           <TableCell>{i+1}</TableCell>
                           <TableCell>
                             <div className="playlist-dialog-table-track-container">
                               <div className="playlist-dialog-table-track-image-container">
-                                <img src={track.image}></img>
+                                <img className="playlist-dialog-table-track-image"src={track.image}></img>
                               </div>
                               <div className="playlist-dialog-table-track-info-container">
                                 <p>{track.song}</p>
-                                <p>{track.artist}</p>
+                                <p className="playlist-dialog-table-track-artist">{track.artist}</p>
                               </div>
                             </div>
                           </TableCell>
                           <TableCell>{track.album}</TableCell>
                           <TableCell>{MStoMinutes(track.time)}</TableCell>
-                          <TableCell>+</TableCell>
+                          <TableCell>
+                            <Button variant="ghost" className="rounded-full" onClick={(e) => handleQueue(track.song)}>
+                              +
+                            </Button>
+                          </TableCell>
                         </TableRow>
                       )
                     })

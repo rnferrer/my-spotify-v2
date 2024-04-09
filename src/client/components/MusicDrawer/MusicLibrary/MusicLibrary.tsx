@@ -36,7 +36,7 @@ const dummyPlaylists = [
 ]
 
 
-function MusicLibrary():JSX.Element{
+function MusicLibrary({handleQueue}:any):JSX.Element{
 
   return (
     <>
@@ -61,7 +61,7 @@ function MusicLibrary():JSX.Element{
                         <p id="playlist-item-author-total">{`${playlist.author} • ${playlist.total} songs`}</p>
                       </div>
                     </div>
-                    <PlaylistDialog/>
+                    <PlaylistDialog handleQueue={handleQueue}/>
 
                   </div>
                 )

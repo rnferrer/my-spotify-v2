@@ -37,12 +37,11 @@ type SearchResult = {
   song: string
 }
 
-
-function MusicSearch():JSX.Element{
+//TODO: make musicsearch props type
+function MusicSearch({handleQueue}:any):JSX.Element{
 
   const [searchQuery, setSearchQuery] = useState('')
   const [searchResults, setSearchResults] = useState<SearchResult[]>([])
-  const { toast } = useToast();
 
   const handleSearch = (event:React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(event.target.value)
@@ -55,12 +54,6 @@ function MusicSearch():JSX.Element{
     }
   }
 
-  const handleQueue = (song:string) => {
-    return toast({
-      description: `${song} has been queued`,
-      duration: 1500,
-    })
-  }
   return (
     <>
       <div id="music-search-container">
