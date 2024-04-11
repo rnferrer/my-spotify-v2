@@ -1,3 +1,12 @@
+.drawer-button:hover{
+  cursor: pointer;
+}
+
+.drawer-button{
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
 #music-drawer-container{
   position: relative;
 }

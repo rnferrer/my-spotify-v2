@@ -1,5 +1,5 @@
 
-import express from "express";
+const express = require('express')
 //import cors from "cors";
 
 const port = 3000;
@@ -13,7 +13,7 @@ const app = express();
 //app.use(cors(corsOptions));
 
 app.get("/api/hello", (req, res) => {
-  let foo:any = req.body
+  let foo = req.body
   console.log(foo)
   res.json({ hello: "world" });
 });
