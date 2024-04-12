@@ -10,7 +10,7 @@ function Landing():JSX.Element {
         <div id="landing-content-container">
           <h1 id="landing-header">Welcome to mySpotify</h1>
           <h4 id="landing-subtext">Build your custom Spotify listening experience here.</h4>
-            <a href="/api/login">
+            <a href="/api/spotify/login">
               <Button>
                 Login with Spotify 
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-spotify" viewBox="0 0 16 16" style={{marginLeft: '5px'}}>
