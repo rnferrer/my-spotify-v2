@@ -79,10 +79,9 @@ function MusicQueue() {
             </h1>
           </strong>
           {
-            dummyResults.map((result)=> {
+            dummyResults.map((result, i)=> {
               return(
-                <>
-                  <div id="music-queue-list-item-container">
+                  <div id="music-queue-list-item-container" key={i}>
                     <div id="music-queue-list-item-info">
                       <div id="music-queue-list-image-container">
                         <img src={result.album}></img>
@@ -94,10 +93,9 @@ function MusicQueue() {
                       <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
                       <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8"/>
                     </svg>
+                    <Separator/>
                   </div>
-                  <Separator/>
                 
-                </>
               )
             })
           }

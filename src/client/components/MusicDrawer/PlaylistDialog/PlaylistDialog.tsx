@@ -174,7 +174,7 @@ function PlaylistDialog({handleQueue}:any):JSX.Element {
                     ?
                     samplePlaylist.map((track, i) => {
                       return(
-                        <TableRow className="text-white">
+                        <TableRow className="text-white" key={i}>
                           <TableCell>{i+1}</TableCell>
                           <TableCell>
                             <div className="playlist-dialog-table-track-container">

@@ -48,9 +48,9 @@ function MusicLibrary({handleQueue}:any):JSX.Element{
           <ScrollArea className='h-[85%]'>
 
             {
-              dummyPlaylists.map((playlist) => {
+              dummyPlaylists.map((playlist, i) => {
                 return(
-                  <div id="playlist-item-container">
+                  <div id="playlist-item-container" key={i}>
 
                     <div id="playlist-image-info-container">
                       <div id="playlist-image-container">

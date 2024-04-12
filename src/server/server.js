@@ -6,7 +6,7 @@ const express = require('express'),
 
 require("dotenv").config({path:"../../.env"})
 
-const port = 3000;
+const PORT = 3000;
 const app = express();
 
 passport.serializeUser(function (user, done) {
@@ -20,7 +20,7 @@ passport.use(
     {
       clientID: process.env.CLIENT_ID,
       clientSecret: process.env.CLIENT_SECRET,
-      callbackURL: 'http://localhost:3000/api/spotify/callback',
+      callbackURL: process.env.REDIRECT_URI,
     },
     function (accessToken, refreshToken, expires_in, profile, done) {
       // asynchronous verification, for effect...
@@ -52,39 +52,21 @@ app.get("/api/hello", (req, res) => {
   res.json({ hello: "world" });
 });
 
-// app.get("/api/spotify/login",   
-//   passport.authenticate('spotify', {
-//     scope: [
-//       'user-read-email', 
-//       'user-read-private',
-//       'user-read-playback-state',
-//       'user-modify-playback-state',
-//       'user-read-currently-playing',
-//       'playlist-read-private',
-//       'playlist-read-collaborative',
-//       'user-follow-read',
-//       'user-read-playback-position',
-//       'user-top-read',
-//       'user-read-recently-played',
-//       'user-library-read', 
-//       'streaming',
-//     ],
-//     showDialog: true,
-//   }
-// ));
-
-// app.get("/api/spotify/callback",
-//   passport.authenticate('spotify', {failureRedirect: '/login'}),
-//   function (req, res) {
-//     res.redirect('http://localhost:5173/home');
-//   }
-// );
 
 app.get('/logout', function (req, res) {
   req.logout();
   res.redirect('/');
 });
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
-});
+const start = async () => {
+  try {
+    await connectDB(process.env.MONGO_URI);
+    app.listen(PORT, () => {
+      console.log(`Server is listening on port ${PORT}...`);
+    });
+  } catch (error) {
+    console.log('Error in starting app:', error);
+  }
+};
+
+start();

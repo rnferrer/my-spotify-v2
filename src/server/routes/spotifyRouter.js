@@ -33,5 +33,13 @@ module.exports = function (passport) {
     }
   );
 
+  router.get('/search', async(req, res) => {
+    let {q} = req.params
+    let spotifyResponse = await fetch(`https://api.spotify.com/v1/search?q=${q}`)
+    let data = await spotifyResponse.json()
+    console.log(data)
+    res.send({data})
+  })
+
   return router
 }

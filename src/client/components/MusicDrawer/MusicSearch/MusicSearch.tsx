@@ -43,13 +43,17 @@ function MusicSearch({handleQueue}:any):JSX.Element{
   const [searchQuery, setSearchQuery] = useState('')
   const [searchResults, setSearchResults] = useState<SearchResult[]>([])
 
-  const handleSearch = (event:React.ChangeEvent<HTMLInputElement>) => {
+  const handleSearch = async(event:React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(event.target.value)
     console.log(searchQuery)
     if(event.target.value === ""){
       setSearchResults([])
     }
     else{
+      let response = await fetch(`/api/spotify/search?q=${event.target.value}`)
+
+      const data = await response.json()
+      console.log(data)
       setSearchResults(dummyResults)
     }
   }
