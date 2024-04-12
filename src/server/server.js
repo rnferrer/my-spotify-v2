@@ -1,8 +1,10 @@
 
 const express = require('express'),
       passport = require('passport'), 
-      session = require('express-session')
-      SpotifyStrategy = require('passport-spotify').Strategy;
+      session = require('express-session'),
+      SpotifyStrategy = require('passport-spotify').Strategy,
+      connectDB = require('./db/connectdb'),
+      {tokenCreateOrReplace, userFindOrCreate} = require('./db/utils')
 
 require("dotenv").config({path:"../../.env"})
 
@@ -24,12 +26,16 @@ passport.use(
     },
     function (accessToken, refreshToken, expires_in, profile, done) {
       // asynchronous verification, for effect...
-      process.nextTick(function () {
+      process.nextTick(async function () {
+        const {displayName: name, id: userID, photos: [{value:image}], emails: [{value: email}]} = profile
+        console.log(image)
+        const user = await userFindOrCreate(name, userID, image, email)
+        await tokenCreateOrReplace(userID, accessToken, refreshToken)
         // To keep the example simple, the user's spotify profile is returned to
         // represent the logged-in user. In a typical application, you would want
         // to associate the spotify account with a user record in your database,
         // and return that user instead.
-        return done(null, profile);
+        return done(null, user);
       });
     }
   )
