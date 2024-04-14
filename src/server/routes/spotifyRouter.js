@@ -50,14 +50,35 @@ module.exports = function (passport) {
     )
     let {tracks: {items}} = await spotifyResponse.json()
     const tracks = extractTracksFromSearch(items)
-    console.log(data)
-    res.send({data})
+    console.log(tracks)
+    res.send({tracks})
   })
 
   function extractTracksFromSearch (tracks) {
+
     const results = tracks.map((track)=> {
-      return
+
+      const { 
+        uri,
+        artists,
+        name, 
+        album: {
+          images:[, ,{url}],
+        }
+      } = track
+
+      const artistArray = artists.map(({name}) => name)
+
+      return {
+        artists: artistArray,
+        name,
+        image: url,
+        uri
+      }
     })
+
+    return results
+
   }
 
   return router
