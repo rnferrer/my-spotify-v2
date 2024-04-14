@@ -18,14 +18,23 @@ const userFindOrCreate = async(name, userID, image, email) => {
 
 const tokenCreateOrReplace = async(userID, access, refresh) => {
   if(await Token.exists({userID})){
-    Token.deleteOne({userID})
+    await Token.deleteOne({userID});
   }
 
   await Token.create({
     userID,
     access,
     refresh
-  })
+  });
 }
 
-module.exports = {userFindOrCreate, tokenCreateOrReplace}
+const tokenFind = async (userID) => {
+  let {access} = await Token.findOne({userID});
+  return access;
+}
+
+module.exports = {
+  userFindOrCreate, 
+  tokenCreateOrReplace,
+  tokenFind
+}

@@ -2,6 +2,7 @@
 const express = require('express'),
       passport = require('passport'), 
       session = require('express-session'),
+      cookieParser = require('cookie-parser'),
       SpotifyStrategy = require('passport-spotify').Strategy,
       connectDB = require('./db/connectdb'),
       {tokenCreateOrReplace, userFindOrCreate} = require('./db/utils')
@@ -47,6 +48,7 @@ app.use(
 
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(cookieParser())
 
 const spotifyRouter = require('./routes/spotifyRouter')(passport)
 
