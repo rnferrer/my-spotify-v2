@@ -2,20 +2,55 @@ import './MusicDrawer.css';
 import { Button } from '@/components/ui/button';
 import { Drawer, DrawerContent, DrawerTrigger } from '@/components/ui/drawer';
 import { useToast } from '@/components/ui/use-toast';
+import { useEffect, useState } from 'react';
 import MusicSearch from './MusicSearch/MusicSearch';
 import MusicQueue from './MusicQueue/MusicQueue';
 import MusicLibrary from './MusicLibrary/MusicLibrary';
 
+type SearchResult = {
+  image: string,
+  artists: string[],
+  name: string,
+  uri: string
+}
+
 function MusicDrawer() {
 
   const { toast } = useToast();
+  const [ queue, setQueue ] = useState<SearchResult[]>([])
 
-  const handleQueue = (song:string) => {
-    return toast({
-      description: `${song} has been queued`,
-      duration: 1500,
-    })
+  const handleQueue = (song:string, image:string, artist:string, uri:string, isQueueing:boolean) => {
+    if (isQueueing){
+      setQueue([
+        ...queue,
+        {
+          image,
+          artists: [...artist],
+          name: song,
+          uri
+        }
+      ])
+      return toast({
+        description: `${song} has been queued`,
+        duration: 1500,
+      })
+    }
+
+    else{
+      setQueue(queue.filter((item)=>{
+        item.uri !== uri
+      }))
+      return toast({
+        variant: 'destructive',
+        description: `${song} has been dequeued`,
+        duration: 1500,
+      })
+    }
   }
+
+  // useEffect(()=>{
+
+  // },[queue])
   return (
     <>
       <Drawer direction='left'>
@@ -27,7 +62,7 @@ function MusicDrawer() {
         <DrawerContent className="music-drawer-container">
           <MusicSearch handleQueue={handleQueue}/>
           <div id='search-queue-divider'/>
-          <MusicQueue/>
+          <MusicQueue handleQueue={handleQueue} queue={queue}/>
           <div id='queue-library-divider'/>
           <MusicLibrary handleQueue={handleQueue}/>
         </DrawerContent>

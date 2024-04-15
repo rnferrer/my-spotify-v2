@@ -50,7 +50,6 @@ module.exports = function (passport) {
     )
     let {tracks: {items}} = await spotifyResponse.json()
     const tracks = extractTracksFromSearch(items)
-    console.log(tracks)
     res.send({tracks})
   })
 
@@ -65,9 +64,8 @@ module.exports = function (passport) {
         album: {
           images:[, ,{url}],
         }
-      } = track
-
-      const artistArray = artists.map(({name}) => name)
+      } = track,
+      artistArray = artists.map(({name}) => name)
 
       return {
         artists: artistArray,

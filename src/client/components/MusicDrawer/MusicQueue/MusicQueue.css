@@ -12,6 +12,12 @@
   margin-top: 10px;
 }
 
+.empty-queue-text{
+  text-align: center;
+  color: var(--text-secondary);
+  margin-top: 20%;
+}
+
 #music-queue-list-container{
   background-color: var(--background-quaternary);
   width: 100%;
