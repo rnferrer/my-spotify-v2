@@ -74,7 +74,7 @@ function MusicSearch({handleQueue}:any):JSX.Element{
                     result.name = result.name.slice(0,25) + '...'
                   }
                   return(
-                    <li key={i} className="search-result-item" onClick={(e) => handleQueue(result.name, result.image, result.artists, result.uri, true)}>
+                    <li key={i} className="search-result-item" onClick={(e) => handleQueue(result.name, result.image, result.artists, result.uri, true, i)}>
                       <div id="search-result-info-container">
                         <div id="search-result-image-container">
                           <img src={result.image}></img>

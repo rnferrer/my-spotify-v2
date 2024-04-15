@@ -19,7 +19,7 @@ function MusicDrawer() {
   const { toast } = useToast();
   const [ queue, setQueue ] = useState<SearchResult[]>([])
 
-  const handleQueue = (song:string, image:string, artist:string, uri:string, isQueueing:boolean) => {
+  const handleQueue = (song:string, image:string, artist:string, uri:string, isQueueing:boolean, index:number) => {
     if (isQueueing){
       setQueue([
         ...queue,
@@ -37,9 +37,8 @@ function MusicDrawer() {
     }
 
     else{
-      setQueue(queue.filter((item)=>{
-        item.uri !== uri
-      }))
+      console.log(index)
+      setQueue(queue.filter((item, i)=> i!==index))
       return toast({
         variant: 'destructive',
         description: `${song} has been dequeued`,
