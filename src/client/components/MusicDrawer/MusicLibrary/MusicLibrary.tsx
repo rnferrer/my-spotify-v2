@@ -42,7 +42,9 @@ type PlaylistItem = {
   image: string,
   title: string,
   author: string,
-  total: number
+  total: number,
+  id: string,
+  uri: string
 }
 
 
@@ -109,7 +111,7 @@ function MusicLibrary ({handleQueue}:any):JSX.Element{
                           <p id="playlist-item-author-total">{`${playlist.author} • ${playlist.total} songs`}</p>
                         </div>
                       </div>
-                      <PlaylistDialog handleQueue={handleQueue}/>
+                      <PlaylistDialog handleQueue={handleQueue} spotifyID={playlist.id}/>
 
                     </div>
                   )

@@ -71,7 +71,6 @@ module.exports = function (passport) {
   // });
 
   router.post('/queue', async(req, res) => {
-    console.log(req.body);
     let { uri } = req.body;
     const token = await tokenFind(req.cookies.user);
     let response = await fetch('https://api.spotify.com/v1/me/player/queue' + new URLSearchParams({
@@ -100,6 +99,26 @@ module.exports = function (passport) {
     const {items} = await spotifyResponse.json()
     const playlists = extractInfoFromPlaylist(items)
     res.send({playlists})
+  })
+
+  router.get('/playlist', async(req,res) => {
+    const { spotifyID } = req.body
+    const token = await tokenFind(req.cookies.user);
+    const spotifyResponse = await fetch(`https://api.spotify.com/v1/playlist/${spotifyID}`, {
+      headers:{
+        "Authorization": `Bearer ${token}`
+      }
+    });
+
+    const { 
+      owner, 
+      followers :{total},
+      images: [{url}],
+      name,
+      tracks: {items}
+    } = await spotifyResponse.json();
+
+    res.send({owner,total,url,name,items});
   })
 
 
@@ -134,6 +153,7 @@ module.exports = function (passport) {
 
       const {
         uri,
+        id,
         owner: {
           display_name: author
         },
@@ -147,7 +167,8 @@ module.exports = function (passport) {
         author,
         image,
         total,
-        title
+        title,
+        id
       })
     })
     return results

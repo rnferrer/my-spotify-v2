@@ -17,6 +17,7 @@ import {
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Button } from "@/components/ui/button"
 import './PlaylistDialog.css'
+import { useEffect, useState } from "react"
 
 let dummyPlaylist = {
   image: 'https://picsum.photos/100',
@@ -111,14 +112,33 @@ let samplePlaylist = [
   },
 ]
 
-function MStoMinutes (ms: number): string {
+const MStoMinutes = (ms: number): string => {
   let minutesString: string = '';
   minutesString += Math.floor((ms/1000)/60).toString();
   minutesString += ':' + ((ms/1000)%60).toString()
   return minutesString;
 }
 //TODO: make PlaylistDialog props type
-function PlaylistDialog({handleQueue}:any):JSX.Element {
+function PlaylistDialog({handleQueue}:any, spotifyID:string):JSX.Element {
+  const [playlistData, setPlaylistData] = useState({})
+  const [playlistTracks, setPlaylistTracks] = useState([])
+
+  useEffect(()=>{
+    const getPlaylistData = async() => {
+      const response = await fetch('/api/spotify/playlist', {
+        method: 'GET',
+        body: JSON.stringify({
+          spotifyID
+        }),
+        headers: {
+          "Content-type": "application/json"
+        }
+      });
+      const data = await response.json();
+      console.log(data);
+    }
+    getPlaylistData();
+  }, [playlistData, playlistTracks])
   return (
     <>
       <div id="playlist-dialog-container">

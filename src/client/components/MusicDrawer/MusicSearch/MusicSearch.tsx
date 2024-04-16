@@ -1,34 +1,8 @@
 import React, { useState } from 'react';
 import './MusicSearch.css'
 import { Input } from '@/components/ui/input';
+import { debounce } from 'ts-debounce';
 
-let dummyResults = [
-  {
-    album: 'https://picsum.photos/50',
-    artist: 'Post Malone',
-    song: 'Goodbyes'
-  },
-  {
-    album: 'https://picsum.photos/50',
-    artist: 'Post Malone',
-    song: 'I Fall Apart'
-  },
-  {
-    album: 'https://picsum.photos/50',
-    artist: 'Post Malone',
-    song: 'White Iverson'
-  },
-  {
-    album: 'https://picsum.photos/50',
-    artist: 'Post Malone',
-    song: 'Sunflower'
-  },
-  {
-    album: 'https://picsum.photos/50',
-    artist: 'Post Malone',
-    song: 'Psycho'
-  }
-]
 
 type SearchResult = {
   image: string,
@@ -43,7 +17,8 @@ function MusicSearch({handleQueue}:any):JSX.Element{
   const [searchQuery, setSearchQuery] = useState('')
   const [searchResults, setSearchResults] = useState<SearchResult[]>([])
 
-  const handleSearch = async(event:React.ChangeEvent<HTMLInputElement>) => {
+
+  const handleSearch = debounce (async(event:React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(event.target.value)
     console.log(searchQuery)
     if(event.target.value === ""){
@@ -56,7 +31,7 @@ function MusicSearch({handleQueue}:any):JSX.Element{
       console.log()
       setSearchResults(tracks)
     }
-  }
+  }, 1000)
 
   return (
     <>
