@@ -1,5 +1,6 @@
 import './MusicLibrary.css'
 import { ScrollArea } from '@/components/ui/scroll-area';
+import { Skeleton } from '@/components/ui/skeleton';
 import PlaylistDialog from '../PlaylistDialog/PlaylistDialog';
 import { useEffect, useState } from 'react';
 
@@ -66,30 +67,58 @@ function MusicLibrary ({handleQueue}:any):JSX.Element{
           Library
         </h1>
         <div id="music-library-playlist-container">
-          <ScrollArea className='h-[85%]'>
+          { (playlists.length === 0)
+            ?
+            <div id='music-library-loading-container'>
+              <div className='music-library-skeleton-container'>
+                <Skeleton className='h-[40px] w-[40px] mr-2'/>
+                <div>
+                  <Skeleton className='h-4 w-[250px] mb-2'/>
+                  <Skeleton className='h-4 w-[200px]'/>
+                </div>
+              </div>
+              <div className='music-library-skeleton-container'>
+                <Skeleton className='h-[40px] w-[40px] mr-2'/>
+                <div>
+                  <Skeleton className='h-4 w-[250px] mb-2'/>
+                  <Skeleton className='h-4 w-[200px]'/>
+                </div>
+              </div>
+              <div className='music-library-skeleton-container'>
+                <Skeleton className='h-[40px] w-[40px] mr-2'/>
+                <div>
+                  <Skeleton className='h-4 w-[250px] mb-2'/>
+                  <Skeleton className='h-4 w-[200px]'/>
+                </div>
+              </div>
+            </div>
+            :
+              <ScrollArea className='h-[85%]'>
 
-            {
-              playlists.map((playlist:PlaylistItem, i) => {
-                return(
-                  <div id="playlist-item-container" key={i}>
+              {
+                playlists.map((playlist:PlaylistItem, i) => {
+                  return(
+                    <div id="playlist-item-container" key={i}>
 
-                    <div id="playlist-image-info-container">
-                      <div id="playlist-image-container">
-                        <img src={playlist.image}/>
+                      <div id="playlist-image-info-container">
+                        <div id="playlist-image-container">
+                          <img src={playlist.image}/>
+                        </div>
+                        <div id="playlist-item-info-container">
+                          <p id="playlist-item-title">{playlist.title}</p>
+                          <p id="playlist-item-author-total">{`${playlist.author} • ${playlist.total} songs`}</p>
+                        </div>
                       </div>
-                      <div id="playlist-item-info-container">
-                        <p id="playlist-item-title">{playlist.title}</p>
-                        <p id="playlist-item-author-total">{`${playlist.author} • ${playlist.total} songs`}</p>
-                      </div>
+                      <PlaylistDialog handleQueue={handleQueue}/>
+
                     </div>
-                    <PlaylistDialog handleQueue={handleQueue}/>
+                  )
+                })
+              }
 
-                  </div>
-                )
-              })
-            }
-
-          </ScrollArea>
+            </ScrollArea>
+          }
+          
         </div>
       </div>
     </>

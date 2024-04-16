@@ -12,6 +12,17 @@
   margin-top: 8px;
 }
 
+#music-library-loading-container{
+  height: 100%;
+  padding: 15px;
+}
+
+.music-library-skeleton-container{
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 20px;
+}
+
 #music-library-playlist-container{
   height: 100%;
 }
