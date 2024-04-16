@@ -3,6 +3,7 @@ const express = require('express'),
       passport = require('passport'), 
       session = require('express-session'),
       cookieParser = require('cookie-parser'),
+      bodyParser = require('body-parser')
       SpotifyStrategy = require('passport-spotify').Strategy,
       connectDB = require('./db/connectdb'),
       {tokenCreateOrReplace, userFindOrCreate} = require('./db/utils')
@@ -29,7 +30,6 @@ passport.use(
       // asynchronous verification, for effect...
       process.nextTick(async function () {
         const {displayName: name, id: userID, photos: [{value:image}], emails: [{value: email}]} = profile
-        console.log(image)
         const user = await userFindOrCreate(name, userID, image, email)
         await tokenCreateOrReplace(userID, accessToken, refreshToken)
         // To keep the example simple, the user's spotify profile is returned to
@@ -49,6 +49,9 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(cookieParser())
+app.use(express.json());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 const spotifyRouter = require('./routes/spotifyRouter')(passport)
 

@@ -19,8 +19,20 @@ function MusicDrawer() {
   const { toast } = useToast();
   const [ queue, setQueue ] = useState<SearchResult[]>([])
 
-  const handleQueue = (song:string, image:string, artist:string, uri:string, isQueueing:boolean, index:number) => {
+  const handleQueue = async(song:string, image:string, artist:string, uri:string, isQueueing:boolean, index:number) => {
+
     if (isQueueing){
+
+      await fetch('/api/spotify/queue', {
+        method: 'POST',
+        body: JSON.stringify({
+          uri: uri
+        }),
+        headers: {
+          "Content-type": "application/json"
+        }
+      })
+
       setQueue([
         ...queue,
         {
@@ -30,15 +42,17 @@ function MusicDrawer() {
           uri
         }
       ])
+
       return toast({
         description: `${song} has been queued`,
         duration: 1500,
       })
     }
 
+    //Dequeueing a song does not DQ it on the server since Spotify API has not implemented a method of doing so
     else{
-      console.log(index)
-      setQueue(queue.filter((item, i)=> i!==index))
+      setQueue(queue.filter((item, i:number)=> i!==index))
+
       return toast({
         variant: 'destructive',
         description: `${song} has been dequeued`,
@@ -48,8 +62,15 @@ function MusicDrawer() {
   }
 
   // useEffect(()=>{
+  //   const getQueue = async() => {
+  //     const response = await fetch('/api/spotify/queue');
+  //     const tracks = await response.json();
+  //     setQueue(tracks);
+  //   }
+  //   getQueue();
 
   // },[queue])
+
   return (
     <>
       <Drawer direction='left'>

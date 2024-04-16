@@ -1,6 +1,8 @@
 import './MusicLibrary.css'
 import { ScrollArea } from '@/components/ui/scroll-area';
 import PlaylistDialog from '../PlaylistDialog/PlaylistDialog';
+import { useEffect, useState } from 'react';
+
 
 const dummyPlaylists = [
   {
@@ -35,8 +37,27 @@ const dummyPlaylists = [
   },
 ]
 
+type PlaylistItem = {
+  image: string,
+  title: string,
+  author: string,
+  total: number
+}
 
-function MusicLibrary({handleQueue}:any):JSX.Element{
+
+function MusicLibrary ({handleQueue}:any):JSX.Element{
+
+  const [playlists, setPlaylists] = useState([])
+
+  useEffect(()=>{
+
+    const getPlaylists = async() => {
+      let response = await fetch('/api/spotify/playlists');
+      const {playlists} = await response.json()
+      setPlaylists(playlists)
+    }
+    getPlaylists();
+  }, [playlists])
 
   return (
     <>
@@ -48,7 +69,7 @@ function MusicLibrary({handleQueue}:any):JSX.Element{
           <ScrollArea className='h-[85%]'>
 
             {
-              dummyPlaylists.map((playlist, i) => {
+              playlists.map((playlist:PlaylistItem, i) => {
                 return(
                   <div id="playlist-item-container" key={i}>
 
